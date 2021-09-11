@@ -136,3 +136,5 @@ Còn các pods ở service khác thì có thể tìm kiếm theo ***my-service.n
 Thêm nữa k8s còn support việc look up theo cả giao thức như sau ***_http._tcp.my-service.ns***.  
 
 # Headless Services.  
+
+Là những service mà không cần phải load balancing . có thể dùng để cordinate các service .
