@@ -1,0 +1,35 @@
+# + đảm bảo số lượng cụ thể của các replicas
+# được running tại cùng 1 thời điểm. hoặc pod hoặc tập cái pod đều cùng up và available
+### How work
+# Giống như 1 process mà đi giám sát nhiều pod thông qua các node
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    app: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+#Writing
+
+#working
+# kubectl delete --cascade=false (delete ma ko anh huong toi ca pod khac)
+
+#Pattern
+#+ rescheduling
+#+ scaling
+#+ rolling update
+#+ multiple release tracks
+#+ Su dung with service
+

@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name:  pi
+spec:
+  # number job run song song
+  parallelism: 0
+  completions: 0
+  # spec of job
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl
+        command: ["perl", "-Mbignum=bpi","-wle", "print bpi(200)"]
+      restartPolicy: Never
+  backoffLimit: 4
+  # job se duoc delete sau 100s sau khi no finis
+  ttlSecondsAfterFinished: 100
+
+
+  
